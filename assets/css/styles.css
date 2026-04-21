@@ -268,6 +268,14 @@ ul, ol { list-style: none; }
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 0.8s var(--ease) 0.3s forwards;
+  min-height: 1.3em;
+}
+
+.hero__greeting::after {
+  content: '|';
+  animation: blink 0.7s step-end infinite;
+  margin-left: 2px;
+  font-weight: 300;
 }
 
 .hero__name {
@@ -1018,6 +1026,11 @@ ul, ol { list-style: none; }
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.3; transform: scaleY(1); }
   50% { opacity: 0.8; transform: scaleY(1.2); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* ── Responsive ── */

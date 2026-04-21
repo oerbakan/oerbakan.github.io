@@ -83,6 +83,23 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(update);
   }
 
+  // ── Typewriter effect ──
+  const typewriterEl = document.querySelector('[data-typewriter]');
+  if (typewriterEl) {
+    const text = typewriterEl.getAttribute('data-typewriter');
+    let i = 0;
+    setTimeout(() => {
+      function type() {
+        if (i < text.length) {
+          typewriterEl.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 70);
+        }
+      }
+      type();
+    }, 1100);
+  }
+
   // ── Active nav link highlight ──
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav__link').forEach(link => {
