@@ -92,4 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ── Dynamic duration calculation ──
+  document.querySelectorAll('[data-duration-from]').forEach(el => {
+    const [year, month] = el.getAttribute('data-duration-from').split('-').map(Number);
+    const now = new Date();
+    let months = (now.getFullYear() - year) * 12 + (now.getMonth() + 1 - month);
+    const yrs = Math.floor(months / 12);
+    const mos = months % 12;
+    const parts = [];
+    if (yrs > 0) parts.push(yrs + (yrs === 1 ? ' yr' : ' yrs'));
+    if (mos > 0) parts.push(mos + (mos === 1 ? ' mo' : ' mos'));
+    el.textContent = parts.join(' ') || '< 1 mo';
+  });
+
 });
